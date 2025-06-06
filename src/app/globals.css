@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Vogue";
+    src: url("/public/fonts/Vogue-Regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Coolvetica-Regular";
+    src: url("/public/fonts/Coolvetica-Regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Coolvetica-Cond";
+    src: url("/public/fonts/Coolvetica-Cond.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "GreaterTheoryRegular";
+    src: url("/public/fonts/GreaterTheoryRegular.woff2") format("woff2");
+  }
+}
+
+@theme {
+  --font-vogue: Vogue, sans-serif;
+  --font-coolvetica: "Coolvetica-Regular", sans-serif;
+  --font-coolvetica-cond: "Coolvetica-Cond", sans-serif;
+  --font-greater-theory: "GreaterTheoryRegular", sans-serif;
+  --color-primary: #111111;
+  --color-pink: #ffb8e5;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
