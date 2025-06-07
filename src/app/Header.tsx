@@ -22,7 +22,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <hr className="absolute bottom-0 h-[1px] w-full bg-black" />
+        <hr className="absolute bottom-0 h-[2px] w-full bg-black" />
       </div>
     </header>
   );
