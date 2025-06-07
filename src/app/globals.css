@@ -8,22 +8,32 @@
 @layer base {
   @font-face {
     font-family: "Vogue";
-    src: url("/public/fonts/Vogue-Regular.woff2") format("woff2");
+    src: url("/fonts/Vogue-Regular.woff2") format("woff2");
+    src: url("/fonts/Vogue-Regular.woff") format("woff");
   }
 
   @font-face {
     font-family: "Coolvetica-Regular";
-    src: url("/public/fonts/Coolvetica-Regular.woff2") format("woff2");
+    src: url("/fonts/Coolvetica-Regular.woff2") format("woff2");
+    src: url("/fonts/Coolvetica-Regular.woff") format("woff");
   }
 
   @font-face {
     font-family: "Coolvetica-Cond";
-    src: url("/public/fonts/Coolvetica-Cond.woff2") format("woff2");
+    src: url("/fonts/Coolvetica-Cond.woff2") format("woff2");
+    src: url("/fonts/Coolvetica-Cond.woff") format("woff");
   }
 
   @font-face {
     font-family: "GreaterTheoryRegular";
-    src: url("/public/fonts/GreaterTheoryRegular.woff2") format("woff2");
+    src: url("/fonts/GreaterTheoryRegular.woff2") format("woff2");
+    src: url("/fonts/GreaterTheoryRegular.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "InknutAntiqua-SemiBold";
+    src: url("/fonts/InknutAntiqua-SemiBold.woff2") format("woff2");
+    src: url("/fonts/InknutAntiqua-SemiBold.woff") format("woff");
   }
 }
 
@@ -32,6 +42,7 @@
   --font-coolvetica: "Coolvetica-Regular", sans-serif;
   --font-coolvetica-cond: "Coolvetica-Cond", sans-serif;
   --font-greater-theory: "GreaterTheoryRegular", sans-serif;
+  --font-inknut-semibold: "InknutAntiqua-SemiBold", sans-serif;
   --color-primary: #111111;
   --color-pink: #ffb8e5;
 }
@@ -53,3 +64,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@keyframes pulse-x {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(4px);
+  }
+}
+
+.pulse-x {
+  animation: pulse-x 1s ease-in-out infinite;
+}
