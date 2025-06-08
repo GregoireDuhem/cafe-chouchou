@@ -33,7 +33,7 @@ export default function Hero() {
 
           {/* Center */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-6 flex flex-col items-center justify-center relative py-8">
-            <span className="absolute bottom-[30px] left-1/2 -translate-x-1/2 font-vogue text-[28px] sm:text-[36px] lg:text-[40px] opacity-[33%] text-white">
+            <span className="absolute bottom-[50px] left-1/2 -translate-x-1/2 font-vogue text-[28px] sm:text-[36px] lg:text-[40px] opacity-[33%] text-white">
               chouchou
             </span>
             <img src="/img/headerCafeChouchou.png" alt="cafe chouchou" className="h-auto w-fit" />
@@ -47,13 +47,18 @@ export default function Hero() {
                   <img
                     src="/img/coffee.png"
                     alt="coffee"
-                    className="absolute left-10 bottom-6 h-auto w-full scale-125"
+                    className="absolute left-10 bottom-6 h-auto w-full scale-125 z-10"
                   />
                   <img src="/img/starBg.png" alt="cake event" className="h-auto w-full" />
                   <img
+                    src="/img/starBgAnim.png"
+                    alt=" cake event"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto w-full z-0 animate-pulse-scale"
+                  />
+                  <img
                     src="img/freeCoffee.png"
                     alt="coffee event"
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 h-auto w-[85%]"
+                    className="absolute bottom-3 left-1/2 -translate-x-1/2 h-auto w-[85%] z-10"
                   />
                 </div>
                 <img src="/img/cakeEvent.png" alt="cake event" className="h-auto w-full" />

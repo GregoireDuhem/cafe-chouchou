@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="min-h-[643px] w-screen relative z-0 bg-[linear-gradient(to_bottom,_#1E1E1E_0%,_rgba(0,0,0,1)_94%)]">
+    <div className="min-h-[643px] w-screen overflow-x-hidden relative z-0 bg-[linear-gradient(to_bottom,_#1E1E1E_0%,_rgba(0,0,0,1)_94%)]">
       <div className="text-black/30 font-inknut-semibold text-[8rem] rotate-[7.5deg] absolute top-42 w-full text-center z-10">
         CAFE CHOUCHOU
       </div>
@@ -33,9 +33,10 @@ export default function Footer() {
               <input
                 type="text"
                 placeholder="Your email"
+                name="email"
                 className="w-full h-[40px] text-start placeholder:text-start placeholder:text-white placeholder:text-[16px] focus:outline-none bg-transparent"
               />
-              <Icon icon="ph:arrow-right" className="size-8" />
+              <Icon icon="ph:arrow-right" className="size-8 cursor-pointer" />
             </div>
             <hr className="w-full h-[3px] bg-white " />
           </div>
@@ -64,9 +65,9 @@ function FooterInfos({ Title, body }: { Title?: string; body?: string[] }) {
       <span className="text-[16px] font-semibold">{Title}</span>
       <div className="flex flex-col gap-3 text-[16px] leading-[140%]">
         {body?.map((item, index) => (
-          <span key={index} className="cursor-pointer hover:underline">
+          <div key={index} className="cursor-pointer link-underline w-fit">
             {item}
-          </span>
+          </div>
         ))}
       </div>
     </div>

@@ -35,6 +35,12 @@
     src: url("/fonts/InknutAntiqua-SemiBold.woff2") format("woff2");
     src: url("/fonts/InknutAntiqua-SemiBold.woff") format("woff");
   }
+
+  @font-face {
+    font-family: "InriaSerif-Bold";
+    src: url("/fonts/InriaSerif-Bold.woff2") format("woff2");
+    src: url("/fonts/InriaSerif-Bold.woff") format("woff");
+  }
 }
 
 @theme {
@@ -43,6 +49,7 @@
   --font-coolvetica-cond: "Coolvetica-Cond", sans-serif;
   --font-greater-theory: "GreaterTheoryRegular", sans-serif;
   --font-inknut-semibold: "InknutAntiqua-SemiBold", sans-serif;
+  --font-inria-bold: "InriaSerif-Bold", serif;
   --color-primary: #111111;
   --color-pink: #ffb8e5;
 }
@@ -62,6 +69,97 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Button */
+.button-gradient {
+  position: relative;
+  overflow: hidden;
+  color: black;
+  z-index: 0;
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.button-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.button-gradient:hover::before {
+  opacity: 1;
+}
+
+/* Gradient layers by class */
+.btn-chocolat::before {
+  background: linear-gradient(to top right, #845429, #502e11);
+}
+.btn-carrot::before {
+  background: linear-gradient(to top right, #fd7626, #b54b0c);
+}
+.btn-pistache::before {
+  background: linear-gradient(to top right, #24631c, #288e1b);
+}
+.btn-citron::before {
+  background: linear-gradient(to top right, #fff36e, #d5c400);
+}
+.btn-caramel::before {
+  background: linear-gradient(to top right, #aa6b13, #6e460e);
+}
+.btn-marbre::before {
+  background: linear-gradient(to top right, #b78c67, #513e2d);
+}
+
+.button-gradient::before {
+  opacity: 0;
+}
+
+/* Optional white text */
+.btn-chocolat:hover,
+.btn-pistache:hover,
+.btn-caramel:hover {
+  color: white;
+}
+
+/* Pulse */
+@keyframes pulse-scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9); /* smaller at midpoint */
+  }
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 1.8s ease-in-out infinite;
+}
+
+/* Link underline */
+.link-underline {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
 }
 
 @keyframes pulse-x {
