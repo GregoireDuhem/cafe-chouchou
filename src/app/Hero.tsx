@@ -1,14 +1,37 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./components/Button";
+import gsap from "gsap";
 
 export default function Hero() {
+  const leftLine = useRef(null);
+  const rightLine = useRef(null);
+  const topLine = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2, ease: "power3.out" });
+    gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2, ease: "power3.out" });
+    gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out" });
+  }, []);
+
   return (
     <>
-      <div className="min-h-dvh w-screen bg-white">
+      <div className="min-h-dvh w-screen bg-white relative overflow-hidden">
         <Header />
+
+        {/* Animated lines */}
+        <div
+          ref={leftLine}
+          className="absolute left-[27.5%] top-0 w-[1px] bg-black z-10"
+          style={{ height: "100vh" }}
+        ></div>
+        <div ref={rightLine} className="absolute right-[27.5%] top-0 w-[1px] bg-black z-10 bottom-0"></div>
+        <div ref={topLine} className="absolute bottom-[42%] left-0 h-[1px] bg-black z-10"></div>
+
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 gap-y-[32px] pb-32 text-primary text-center min-h-[calc(100vh-152px)]">
           {/* Left */}
           <div
@@ -22,9 +45,6 @@ export default function Hero() {
                 alt="new"
                 className="absolute -top-2 -right-[50%] translate-x-1/2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto px-[2px]"
               />
-              {/* <div className="absolute -top-2 right-[36%] translate-x-1/2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 px-[2px]">
-                New!
-            </div> */}
               <Button Title="Shop" />
             </div>
             <Button Title="Gallery" />
@@ -67,7 +87,7 @@ export default function Hero() {
           </div>
 
           {/* Bottom Left */}
-          <div className="col-span-4 sm:col-span-4 lg:col-span-9 flex flex-col justify-start items-start gap-4 pt-8 text-start">
+          <div className="col-span-4 sm:col-span-4 lg:col-span-9 flex flex-col justify-start items-start gap-4 pt-8 text-start bg-white z-0">
             <div className="font-greater-theory text-start text-[20px] text-black uppercase">
               8 Rue Godot de Mauroy <br />
               Paris, france

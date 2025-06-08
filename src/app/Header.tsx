@@ -1,12 +1,20 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
-import React from "react";
+
+/* eslint-disable @next/next/no-img-element */
+import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import gsap from "gsap";
 
 export default function Header() {
   const pathname = usePathname();
   const isGallery = pathname === "/gallery";
+
+  const hrRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(hrRef.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out" });
+  }, []);
 
   return (
     <header className="h-[152px] w-screen">
@@ -20,7 +28,7 @@ export default function Header() {
         </div>
         <Link
           href="/"
-          className="col-span-2 sm:col-span-2 lg:col-span-6 uppercase text-[28px] sm:text-[36px] lg:text-[48px] font-vogue text-center leading-[0.8] curor-pointer"
+          className="col-span-2 sm:col-span-2 lg:col-span-6 uppercase text-[28px] sm:text-[36px] lg:text-[48px] font-vogue text-center leading-[0.8] cursor-pointer"
         >
           Cafe <br />
           chouchou
@@ -35,7 +43,11 @@ export default function Header() {
             </Link>
           </div>
         </div>
-        <hr className={`absolute bottom-0 h-[2px] w-full ${isGallery ? "bg-white" : "bg-black"}`} />
+        <hr
+          ref={hrRef}
+          className={`absolute bottom-0 h-[1px] bg-black ${isGallery ? "bg-white" : "bg-black"}`}
+          style={{ width: 0 }}
+        />
       </div>
     </header>
   );
