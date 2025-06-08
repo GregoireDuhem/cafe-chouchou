@@ -27,14 +27,7 @@ export default function page() {
           </div>
           {/* Container */}
           <div className="col-span-12 grid grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]">
-            <ProductCard
-              img="/img/shop-1.png"
-              name="Chouchou Tee-shirt"
-              price="29€"
-              stars="4"
-              reviews="4"
-              rate="4.3"
-            />
+            <ProductCard img="/img/shop-1.png" name="Chouchou Tee-shirt" price="29€" stars="4" reviews="4" rate="4.3" />
             <ProductCard img="/img/shop-2.png" name="Chouchou Mug" price="14€" stars="5" reviews="57" rate="4.8" />
             <ProductCard img="/img/shop-3.png" name="Coming Soon" price="" stars="" reviews="" rate="" />
           </div>
@@ -77,11 +70,13 @@ function ProductCard({
             className="absolute top-2 right-2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto"
           />
         )}
-        <img
-          src={img}
-          alt={name}
-          className={`w-full transition-all duration-500 ease-in-out ${isComingSoon ? "" : "group-hover:scale-110"}`}
-        />
+        <Link href="/item">
+          <img
+            src={img}
+            alt={name}
+            className="w-full transition-all duration-500 ease-in-out group-hover:scale-110 cursor-pointer"
+          />
+        </Link>
       </div>
 
       <div className="flex flex-col justify-start">

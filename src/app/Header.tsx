@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
-import { Icon } from "@iconify/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -28,10 +28,10 @@ export default function Header() {
         <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-end">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-5 w-full h-full">
             <div className="flex justify-end items-center col-start-1 sm:col-start-2">
-              <Icon icon="ph:user-light" className="size-6" />
+              <img src="/img/user.svg" alt="user" className="cursor-pointer" />
             </div>
             <div className="flex justify-start items-center col-start-3">
-              <Icon icon="humbleicons:cart" className="size-6" />
+              <img src="/img/cart.svg" alt="cart" className="cursor-pointer" />
             </div>
           </div>
         </div>
