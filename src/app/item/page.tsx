@@ -70,7 +70,8 @@ export default function page() {
                       />
                       <button className="w-[57px] border h-[40px]">+</button>
                     </div>
-                    <button
+                    <Link
+                      href="/cart"
                       className="col-span-3 size-full rounded-lg bg-[#1E1E1E] text-white flex text-center items-center justify-center
                     hover:bg-pink hover:text-primary transition duration-500 ease-in-out group"
                     >
@@ -79,7 +80,7 @@ export default function page() {
                         icon="ph:shopping-bag"
                         className="size-5 ml-2 group-hover:text-primary text-white transition duration-500 ease-in-out"
                       />
-                    </button>
+                    </Link>
                     <div className="col-span-5 text-start h-full font-coolvetica text-[16px]">
                       T-shirt 100 % coton – Confort essentiel, style intemporel <br />
                       <br />

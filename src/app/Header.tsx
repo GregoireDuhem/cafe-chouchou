@@ -30,9 +30,9 @@ export default function Header() {
             <div className="flex justify-end items-center col-start-1 sm:col-start-2">
               <img src="/img/user.svg" alt="user" className="cursor-pointer" />
             </div>
-            <div className="flex justify-start items-center col-start-3">
+            <Link href="/cart" className="flex justify-start items-center col-start-3">
               <img src="/img/cart.svg" alt="cart" className="cursor-pointer" />
-            </div>
+            </Link>
           </div>
         </div>
         <hr className={`absolute bottom-0 h-[2px] w-full ${isGallery ? "bg-white" : "bg-black"}`} />
