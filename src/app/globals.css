@@ -80,6 +80,7 @@ body {
   z-index: 0;
   border: 1px solid black;
   background-color: transparent;
+  transition: color 0.3s ease;
 }
 
 .button-gradient::before {
@@ -91,11 +92,12 @@ body {
   transition: opacity 0.4s ease;
 }
 
-.button-gradient:hover::before {
+.button-gradient:hover::before,
+.button-gradient.selected::before {
   opacity: 1;
 }
 
-/* Gradient layers by class */
+/* Gradient layers */
 .btn-chocolat::before {
   background: linear-gradient(to top right, #845429, #502e11);
 }
@@ -112,17 +114,16 @@ body {
   background: linear-gradient(to top right, #aa6b13, #6e460e);
 }
 .btn-marbre::before {
-  background: linear-gradient(to top right, #b78c67, #513e2d);
+  background: linear-gradient(to top right, #b78c67, #7f5d3f);
 }
 
-.button-gradient::before {
-  opacity: 0;
-}
-
-/* Optional white text */
+/* Optional white text on selection */
 .btn-chocolat:hover,
+.btn-chocolat.selected,
 .btn-pistache:hover,
-.btn-caramel:hover {
+.btn-pistache.selected,
+.btn-caramel:hover,
+.btn-caramel.selected {
   color: white;
 }
 
