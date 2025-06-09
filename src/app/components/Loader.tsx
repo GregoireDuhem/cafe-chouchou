@@ -46,7 +46,9 @@ export default function Loader({ onFinish }: { onFinish: () => void }) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[9999] bg-black text-white flex flex-col justify-center items-center"
+      className={`fixed inset-0 z-[9999] bg-black text-white flex flex-col justify-center items-center ${
+        showMainTitle ? "cursor-pointer" : "cursor-default"
+      }`}
       onClick={handleClick}
     >
       {/* Glitch / 3 Titles */}

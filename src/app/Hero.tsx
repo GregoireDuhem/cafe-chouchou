@@ -16,9 +16,9 @@ export default function Hero() {
 
   useEffect(() => {
     if (isLoading) return;
-    gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2, ease: "power3.out", opacity: 1 });
-    gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2, ease: "power3.out", opacity: 1 });
-    gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out", opacity: 1 });
+    gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2.3, ease: "power3.out", opacity: 1 });
+    gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
+    gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
   }, [isLoading]);
 
   return (
