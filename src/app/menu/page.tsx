@@ -39,15 +39,30 @@ export default function Page() {
             <span className="font-coolvetica text-[40px]">Drinks</span>
             <div className="gap-8 flex flex-col items-start col-span-5 col-start-1 w-full font-vogue text-[24px]">
               <div className="grid grid-cols-5 w-full gap-5">
-                <span className="col-span-3">MATCHA LATTE</span>
+                <span
+                  className="col-span-3 cursor-pointer link-underline w-fit"
+                  onClick={() => setSelectedItem("matcha")}
+                >
+                  MATCHA LATTE
+                </span>
                 <span className="col-span-1">7.50€</span>
               </div>
               <div className="grid grid-cols-5 w-full gap-5">
-                <span className="col-span-3">CAFE LATTE</span>
+                <span
+                  className="col-span-3 cursor-pointer link-underline w-fit"
+                  onClick={() => setSelectedItem("cafe")}
+                >
+                  CAFE LATTE
+                </span>
                 <span className="col-span-1">4.50€</span>
               </div>
               <div className="grid grid-cols-5 w-full gap-5">
-                <span className="col-span-3">ICE AMERICANO</span>
+                <span
+                  className="col-span-3 cursor-pointer link-underline w-fit"
+                  onClick={() => setSelectedItem("americano")}
+                >
+                  ICE AMERICANO
+                </span>
                 <span className="col-span-1">4.50€</span>
               </div>
             </div>
