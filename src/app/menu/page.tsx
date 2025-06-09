@@ -21,7 +21,7 @@ export default function page() {
             </div>
           </div>
           <div className="col-span-12 uppercase text-[48px] flex items-start pt-[76px]">
-            <span className="font-vogue pl-[15px] pr-[5px] bg-pink">Menu</span>
+            <span className="font-vogue pl-[15px] pr-[5px] leading-[50px] bg-pink">Menu</span>
           </div>
           {/* Container */}
           <div className="col-span-5 flex flex-col text-start uppercase pt-[108px] gap-[40px]">

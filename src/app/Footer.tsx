@@ -10,9 +10,9 @@ export default function Footer() {
       </div>
       <div className="relative h-full w-full px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-5 items-start text-white z-20">
         <div className="pt-[16px] flex gap-[14px] col-span-2">
-          <Icon icon="pajamas:twitter" className="size-6" />
-          <Icon icon="uil:instagram" className="size-6" />
-          <Icon icon="uil:youtube" className="size-6" />
+          <Icon icon="pajamas:twitter" className="size-6 cursor-pointer" />
+          <Icon icon="uil:instagram" className="size-6 cursor-pointer" />
+          <Icon icon="uil:youtube" className="size-6 cursor-pointer" />
         </div>
         <FooterInfos
           Title="About us"

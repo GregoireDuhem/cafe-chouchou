@@ -23,7 +23,7 @@ export default function page() {
           </div>
 
           <div className="col-span-12 uppercase text-[48px] flex items-start pt-[76px]">
-            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink text-primary">Gallery</h1>
+            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink text-primary leading-[50px]">Gallery</h1>
           </div>
 
           <div className="col-span-12 grid grid-cols-12 pt-[91px] gap-5 pb-[40px]">
