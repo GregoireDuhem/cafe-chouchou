@@ -16,6 +16,8 @@ export default function Hero() {
   const leftButtonsRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
 
+  const centerContentRef = useRef(null);
+
   useEffect(() => {
     if (isLoading) return;
     gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2.3, ease: "power3.out", opacity: 1 });
@@ -32,6 +34,15 @@ export default function Hero() {
       rightContentRef.current?.children || [],
       { x: 100, opacity: 0 },
       { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.2 }
+    );
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (isLoading) return;
+    gsap.fromTo(
+      centerContentRef.current,
+      { opacity: 0, scale: 0.2 },
+      { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out", delay: 0.5 }
     );
   }, [isLoading]);
 
@@ -78,7 +89,12 @@ export default function Hero() {
             <span className="absolute bottom-[50px] left-1/2 -translate-x-1/2 font-vogue text-[28px] sm:text-[36px] lg:text-[40px] opacity-[33%] text-white">
               chouchou
             </span>
-            <img src="/img/headerCafeChouchou.png" alt="cafe chouchou" className="h-auto w-fit" />
+            <img
+              src="/img/headerCafeChouchou.png"
+              alt="cafe chouchou"
+              className="h-auto w-fit opacity-0"
+              ref={centerContentRef}
+            />
           </div>
 
           {/* Right */}
