@@ -40,7 +40,7 @@ export default function Page() {
             <div className="gap-8 flex flex-col items-start col-span-5 col-start-1 w-full font-vogue text-[24px]">
               <div className="grid grid-cols-5 w-full gap-5">
                 <span
-                  className="col-span-3 cursor-pointer link-underline w-fit"
+                  className={`col-span-3 cursor-pointer link-underline w-fit ${isSelected("matcha") ? "selected" : ""}`}
                   onClick={() => setSelectedItem("matcha")}
                 >
                   MATCHA LATTE
@@ -49,7 +49,7 @@ export default function Page() {
               </div>
               <div className="grid grid-cols-5 w-full gap-5">
                 <span
-                  className="col-span-3 cursor-pointer link-underline w-fit"
+                  className={`col-span-3 cursor-pointer link-underline w-fit ${isSelected("cafe") ? "selected" : ""}`}
                   onClick={() => setSelectedItem("cafe")}
                 >
                   CAFE LATTE
@@ -58,7 +58,9 @@ export default function Page() {
               </div>
               <div className="grid grid-cols-5 w-full gap-5">
                 <span
-                  className="col-span-3 cursor-pointer link-underline w-fit"
+                  className={`col-span-3 cursor-pointer link-underline w-fit ${
+                    isSelected("americano") ? "selected" : ""
+                  }`}
                   onClick={() => setSelectedItem("americano")}
                 >
                   ICE AMERICANO

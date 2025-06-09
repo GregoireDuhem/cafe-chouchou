@@ -164,6 +164,11 @@ body {
   width: 100%;
 }
 
+.link-underline.selected::after {
+  width: 100%;
+}
+
+
 @keyframes pulse-x {
   0%,
   100% {
