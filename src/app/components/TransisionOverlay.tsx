@@ -56,7 +56,7 @@ export default function TransitionOverlay() {
           className={`relative h-full w-full px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-5 items-center text-primary
           }`}
         >
-          <div className="col-span-12 lg:col-span-2 lg:col-start-6 uppercase text-[28px] sm:text-[36px] lg:text-[48px] font-vogue text-center leading-[0.8] cursor-pointer">
+          <div className="col-span-12 lg:col-span-4 lg:col-start-5 uppercase text-[28px] sm:text-[36px] lg:text-[48px] font-vogue text-center leading-[0.8] cursor-pointer">
             Cafe <br />
             chouchou
           </div>

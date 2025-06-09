@@ -6,17 +6,20 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./components/Button";
 import gsap from "gsap";
+import { useLoader } from "./components/LoaderContext";
 
 export default function Hero() {
   const leftLine = useRef(null);
   const rightLine = useRef(null);
   const topLine = useRef(null);
+  const { isLoading } = useLoader();
 
   useEffect(() => {
-    gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2, ease: "power3.out" });
-    gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2, ease: "power3.out" });
-    gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out" });
-  }, []);
+    if (isLoading) return;
+    gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2, ease: "power3.out", opacity: 1 });
+    gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2, ease: "power3.out", opacity: 1 });
+    gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out", opacity: 1 });
+  }, [isLoading]);
 
   return (
     <>
@@ -26,11 +29,11 @@ export default function Hero() {
         {/* Animated lines */}
         <div
           ref={leftLine}
-          className="absolute left-[27.5%] top-0 w-[1px] bg-black z-10"
+          className="absolute left-[27.5%] top-0 w-[1px] bg-black z-10 opacity-0"
           style={{ height: "100vh" }}
         ></div>
-        <div ref={rightLine} className="absolute right-[27.5%] top-0 w-[1px] bg-black z-10 bottom-0"></div>
-        <div ref={topLine} className="absolute bottom-[42%] left-0 h-[1px] bg-black z-10"></div>
+        <div ref={rightLine} className="absolute right-[27.5%] top-0 w-[1px] bg-black z-10 bottom-0 opacity-0"></div>
+        <div ref={topLine} className="absolute bottom-[42%] left-0 h-[1px] bg-black z-10 opacity-0"></div>
 
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 gap-y-[32px] pb-32 text-primary text-center min-h-[calc(100vh-152px)]">
           {/* Left */}

@@ -5,16 +5,19 @@ import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import gsap from "gsap";
+import { useLoader } from "./components/LoaderContext";
 
 export default function Header() {
   const pathname = usePathname();
   const isGallery = pathname === "/gallery";
+  const { isLoading } = useLoader();
 
   const hrRef = useRef(null);
 
   useEffect(() => {
+    if (isLoading) return;
     gsap.fromTo(hrRef.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out" });
-  }, []);
+  }, [isLoading]);
 
   return (
     <header className="h-[152px] w-screen">
