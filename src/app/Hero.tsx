@@ -13,12 +13,26 @@ export default function Hero() {
   const rightLine = useRef(null);
   const topLine = useRef(null);
   const { isLoading } = useLoader();
+  const leftButtonsRef = useRef<HTMLDivElement>(null);
+  const rightContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isLoading) return;
     gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2.3, ease: "power3.out", opacity: 1 });
     gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
     gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
+
+    gsap.fromTo(
+      leftButtonsRef.current?.children || [],
+      { x: -100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.2 }
+    );
+
+    gsap.fromTo(
+      rightContentRef.current?.children || [],
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.2 }
+    );
   }, [isLoading]);
 
   return (
@@ -39,19 +53,24 @@ export default function Hero() {
           {/* Left */}
           <div
             className="col-span-4 sm:col-span-2 lg:col-span-3 uppercase pt-10 md:pt-0 flex flex-col justify-center items-center md:items-start gap-6 
-          font-vogue text-[24px] sm:text-[28px] lg:text-[32px]"
+              font-vogue text-[24px] sm:text-[28px] lg:text-[32px]"
+            ref={leftButtonsRef}
           >
-            <Button Title="Menu" />
-            <div className="relative">
-              <img
-                src="/img/new.png"
-                alt="new"
-                className="absolute -top-2 -right-[50%] translate-x-1/2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto px-[2px]"
-              />
-              <Button Title="Shop" />
-            </div>
-            <Button Title="Gallery" />
-            <Button Title="About us" />
+            {!isLoading && (
+              <>
+                <Button Title="Menu" />
+                <div className="relative">
+                  <img
+                    src="/img/new.png"
+                    alt="new"
+                    className="absolute -top-2 -right-[50%] translate-x-1/2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto px-[2px]"
+                  />
+                  <Button Title="Shop" />
+                </div>
+                <Button Title="Gallery" />
+                <Button Title="About us" />
+              </>
+            )}
           </div>
 
           {/* Center */}
@@ -63,30 +82,35 @@ export default function Hero() {
           </div>
 
           {/* Right */}
-          <div className="col-span-4 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center gap-4 pt-8">
-            <div className="grid grid-cols-3 gap-5 w-full">
-              <div className="col-span-1 sm:col-span-2 col-start-1 sm:col-start-2 flex flex-col items-center justify-center">
-                <div className="relative">
-                  <img
-                    src="/img/coffee.png"
-                    alt="coffee"
-                    className="absolute left-10 bottom-6 h-auto w-full scale-125 z-10"
-                  />
-                  <img src="/img/starBg.png" alt="cake event" className="h-auto w-full" />
-                  <img
-                    src="/img/starBgAnim.png"
-                    alt=" cake event"
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto w-full z-0 animate-pulse-scale"
-                  />
-                  <img
-                    src="img/freeCoffee.png"
-                    alt="coffee event"
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 h-auto w-[85%] z-10"
-                  />
+          <div
+            className="col-span-4 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center gap-4 pt-8"
+            ref={rightContentRef}
+          >
+            {!isLoading && (
+              <div className="grid grid-cols-3 gap-5 w-full">
+                <div className="col-span-1 sm:col-span-2 col-start-1 sm:col-start-2 flex flex-col items-center justify-center">
+                  <div className="relative">
+                    <img
+                      src="/img/coffee.png"
+                      alt="coffee"
+                      className="absolute left-10 bottom-6 h-auto w-full scale-125 z-10"
+                    />
+                    <img src="/img/starBg.png" alt="cake event" className="h-auto w-full" />
+                    <img
+                      src="/img/starBgAnim.png"
+                      alt=" cake event"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto w-full z-0 animate-pulse-scale"
+                    />
+                    <img
+                      src="img/freeCoffee.png"
+                      alt="coffee event"
+                      className="absolute bottom-3 left-1/2 -translate-x-1/2 h-auto w-[85%] z-10"
+                    />
+                  </div>
+                  <img src="/img/cakeEvent.png" alt="cake event" className="h-auto w-full" />
                 </div>
-                <img src="/img/cakeEvent.png" alt="cake event" className="h-auto w-full" />
               </div>
-            </div>
+            )}
           </div>
 
           {/* Bottom Left */}
