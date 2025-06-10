@@ -9,6 +9,7 @@ import Footer from "../Footer";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useLoader } from "../components/LoaderContext";
 import gsap from "gsap";
+import ScrambleLink from "../components/ScrambleLink";
 
 export default function page() {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -31,12 +32,12 @@ export default function page() {
           {/*  */}
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; Shop
+              <ScrambleLink href="/" label="Home > Shop" />
             </Link>
             <div className="flex gap-4 uppercase font-coolvetica-cond text-[20px]">
-              <Link href="/menu">[menu]</Link>
-              <Link href="/gallery">[gallery]</Link>
-              <Link href="/about-us">[about us]</Link>
+              <ScrambleLink href="/menu" label="[menu]" />
+              <ScrambleLink href="/gallery" label="[gallery]" />
+              <ScrambleLink href="/about-us" label="[about us]" />
             </div>
           </div>
           <div className="col-span-12 uppercase text-[48px] flex items-start pt-[76px]">
@@ -47,7 +48,14 @@ export default function page() {
             className="col-span-12 grid grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]"
             ref={imageRef}
           >
-            <ProductCard img="/img/shop-1.webp" name="Chouchou Tee-shirt" price="29€" stars="4" reviews="4" rate="4.3" />
+            <ProductCard
+              img="/img/shop-1.webp"
+              name="Chouchou Tee-shirt"
+              price="29€"
+              stars="4"
+              reviews="4"
+              rate="4.3"
+            />
             <ProductCard img="/img/shop-2.webp" name="Chouchou Mug" price="14€" stars="5" reviews="57" rate="4.8" />
             <ProductCard img="/img/shop-3.webp" name="Coming Soon" price="" stars="" reviews="" rate="" />
           </div>

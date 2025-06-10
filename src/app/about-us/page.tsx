@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Footer from "@/app/Footer";
 import Header from "@/app/Header";
+import ScrambleLink from "../components/ScrambleLink";
 
 export default function page() {
   return (
@@ -12,12 +13,12 @@ export default function page() {
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-primary text-center min-h-[calc(100vh-152px)]">
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; About us
+              <ScrambleLink href="/" label="Home > About us" />
             </Link>
             <div className="flex gap-4 uppercase font-coolvetica-cond text-[20px]">
-              <Link href="/menu">[menu]</Link>
-              <Link href="/shop">[shop]</Link>
-              <Link href="/gallery">[gallery]</Link>
+              <ScrambleLink href="/menu" label="[menu]" />
+              <ScrambleLink href="/shop" label="[shop]" />
+              <ScrambleLink href="/gallery" label="[gallery]" />
             </div>
           </div>
 

@@ -7,6 +7,7 @@ import Footer from "../Footer";
 import { GalleryImage } from "./GalleryImage";
 import gsap from "gsap";
 import { useLoader } from "../components/LoaderContext";
+import ScrambleLink from "../components/ScrambleLink";
 
 export default function page() {
   const { isLoading } = useLoader();
@@ -28,12 +29,12 @@ export default function page() {
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-white text-center min-h-[calc(100vh-152px)]">
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; Gallery
+              <ScrambleLink href="/" label="Home > Gallery" />
             </Link>
             <div className="flex gap-4 uppercase font-coolvetica-cond text-[20px]">
-              <Link href="/menu">[menu]</Link>
-              <Link href="/shop">[shop]</Link>
-              <Link href="/about-us">[about us]</Link>
+              <ScrambleLink href="/menu" label="[menu]" />
+              <ScrambleLink href="/shop" label="[shop]" />
+              <ScrambleLink href="/about-us" label="[about us]" />
             </div>
           </div>
 

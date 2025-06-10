@@ -4,6 +4,7 @@ import Header from "../Header";
 import Link from "next/link";
 import Footer from "../Footer";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import ScrambleLink from "../components/ScrambleLink";
 
 export default function page() {
   return (
@@ -13,7 +14,7 @@ export default function page() {
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-primary text-center min-h-[calc(100vh-152px)]">
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; Item
+              <ScrambleLink href="/" label="Home > Item" />
             </Link>
           </div>
 

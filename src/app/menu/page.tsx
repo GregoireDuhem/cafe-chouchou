@@ -7,6 +7,7 @@ import Link from "next/link";
 import Footer from "../Footer";
 import gsap from "gsap";
 import { useLoader } from "../components/LoaderContext";
+import ScrambleLink from "../components/ScrambleLink";
 
 export default function Page() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -88,12 +89,12 @@ export default function Page() {
           {/* Breadcrumb and Nav */}
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; Menu
+              <ScrambleLink href="/" label="Home > Menu" />
             </Link>
             <div className="flex gap-4 uppercase font-coolvetica-cond text-[20px]">
-              <Link href="/shop">[shop]</Link>
-              <Link href="/gallery">[gallery]</Link>
-              <Link href="/about-us">[about us]</Link>
+              <ScrambleLink href="/shop" label="[shop]" />
+              <ScrambleLink href="/gallery" label="[gallery]" />
+              <ScrambleLink href="/about-us" label="[about us]" />
             </div>
           </div>
 
