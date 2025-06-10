@@ -18,7 +18,7 @@ export default function page() {
     gsap.fromTo(
       items,
       { y: 100, opacity: 0, scale: 0.8 },
-      { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out", stagger: 0.2 }
+      { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out", stagger: 0.4, delay: 0.2 }
     );
   }, [isLoading]);
 

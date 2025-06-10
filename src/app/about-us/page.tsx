@@ -1,11 +1,35 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import Footer from "@/app/Footer";
 import Header from "@/app/Header";
 import ScrambleLink from "../components/ScrambleLink";
 
+import gsap from "gsap";
+import { useLoader } from "../components/LoaderContext";
+
 export default function page() {
+  const { isLoading } = useLoader();
+  const leftImgRef = useRef<HTMLImageElement>(null);
+  const rightImgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (isLoading) return;
+    gsap.fromTo(
+      leftImgRef.current,
+      { x: "-100%", opacity: 0 },
+      { x: "0%", opacity: 1, duration: 0.7, ease: "power3.out", delay: 0.2 }
+    );
+    gsap.fromTo(
+      rightImgRef.current,
+      { x: "100%", opacity: 0 },
+      { x: "0%", opacity: 1, duration: 0.7, ease: "power3.out", delay: 0.5 }
+    );
+  }, [isLoading]);
+
   return (
     <>
       <div className="min-h-dvh w-screen bg-white">
@@ -28,7 +52,12 @@ export default function page() {
 
           <div className="col-span-12 grid grid-cols-12 gap-x-5 pb-[64px]">
             <div className="col-span-3">
-              <img src="/img/about-us-2.webp" alt="about us 2" className="w-full pt-[212px]" />
+              <img
+                src="/img/about-us-2.webp"
+                alt="about us 2"
+                className="w-full pt-[212px] opacity-0"
+                ref={leftImgRef}
+              />
             </div>
             <div className="col-span-6 text-start text-[20px] text-black pt-[26px] h-fit">
               Welcome to <span className="font-coolvetica">Cafe Chouchou</span> where timeless elegance meets your daily
@@ -47,7 +76,7 @@ export default function page() {
               sophisticated. Always Chouchou.
             </div>
             <div className="col-span-3">
-              <img src="/img/about-us-1.webp" alt="about us 1" className="w-full" />
+              <img src="/img/about-us-1.webp" alt="about us 1" className="w-full opacity-0" ref={rightImgRef} />
             </div>
             <div className="col-span-5 col-start-8">
               <img src="/img/about-us-3.webp" alt="about us 3" className="w-full" />

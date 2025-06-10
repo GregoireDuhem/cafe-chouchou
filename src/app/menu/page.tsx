@@ -29,6 +29,15 @@ export default function Page() {
   };
 
   useEffect(() => {
+    const imageKeys = ["matcha", "cafe", "americano", "chocolat", "carrot", "pistache", "citron", "caramel", "marbre"];
+
+    imageKeys.forEach((key) => {
+      const img = new Image();
+      img.src = `/img/${key}.webp`;
+    });
+  }, []);
+
+  useEffect(() => {
     if (isLoading) return;
     if (newImageRef.current) {
       gsap.fromTo(

@@ -98,7 +98,7 @@ export default function Hero() {
 
           {/* Center */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-6 flex flex-col items-center justify-center relative py-8">
-            <span className="absolute bottom-[50px] left-1/2 -translate-x-1/2 font-vogue text-[28px] sm:text-[36px] lg:text-[40px] opacity-[33%] text-white">
+            <span className="absolute bottom-[10%] left-1/2 -translate-x-1/2 font-vogue text-[28px] sm:text-[36px] lg:text-[40px] opacity-[33%] text-white z-20">
               chouchou
             </span>
             <img
