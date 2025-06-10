@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import Button from "./components/Button";
 import gsap from "gsap";
 import { useLoader } from "./components/LoaderContext";
+import Link from "next/link";
 
 export default function Hero() {
   const leftLine = useRef(null);
@@ -162,7 +163,7 @@ export default function Hero() {
 
           {/* Bottom Right */}
           <div className="col-span-3 sm:col-span-2 lg:col-span-3 flex items-center">
-            <div className="grid grid-cols-3 gap-5 w-full">
+            <Link className="grid grid-cols-3 gap-5 w-full cursor-pointer" href="/shop">
               <div className="col-span-2 col-start-2 flex flex-col items-center pt-8 gap-4" ref={bottomRightRef}>
                 <div className="relative z-0 opacity-0">
                   <img
@@ -177,7 +178,7 @@ export default function Hero() {
                   unlock <br /> new item
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
