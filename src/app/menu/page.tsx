@@ -148,7 +148,7 @@ export default function Page() {
               {/* Previous image stays in background */}
               {prevItem && (
                 <img
-                  src={`/img/${prevItem}.png`}
+                  src={`/img/${prevItem}.webp`}
                   alt={prevItem}
                   className="absolute top-0 left-0 w-full h-full object-contain z-0 scale-75"
                 />
@@ -158,7 +158,7 @@ export default function Page() {
                 <img
                   ref={newImageRef}
                   key={selectedItem}
-                  src={`/img/${selectedItem}.png`}
+                  src={`/img/${selectedItem}.webp`}
                   alt={selectedItem}
                   className="absolute top-0 left-0 w-full h-full object-contain z-10 scale-75"
                 />

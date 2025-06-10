@@ -50,7 +50,7 @@ export default function Footer() {
               <span>Secure Payment Guaranteed</span>
             </div>
             <hr className="w-full h-[3px] bg-white" />
-            <img src="/img/logoCB.png" alt="logoCB" className="w-auto h-[32px] object-contain" />
+            <img src="/img/logoCB.webp" alt="logoCB" className="w-auto h-[32px] object-contain" />
           </div>
           <div className="text-center font-semibold pb-5">© 2025, Cafe Chouchou. ALL RIGHTS RESERVED</div>
         </div>

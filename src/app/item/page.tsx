@@ -20,7 +20,7 @@ export default function page() {
           <div className="col-span-12 flex items-start pt-[64px]">
             <div className="grid grid-cols-12 gap-5">
               <div className="col-span-7 w-full h-full bg-black/1 relative">
-                <img src="/img/shop-1.png" alt="item" />
+                <img src="/img/shop-1.webp" alt="item" />
               </div>
               <div className="col-span-5 flex flex-col gap-8">
                 <div>

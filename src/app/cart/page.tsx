@@ -26,7 +26,7 @@ export default function page() {
 
             {/* Cart Row */}
             <div className="grid grid-cols-8 gap-5 w-full text-start items-center mt-5">
-              <img src="/img/shop-1.png" alt="shop-1" className="col-span-2 w-[210px] h-auto" />
+              <img src="/img/shop-1.webp" alt="shop-1" className="col-span-2 w-[210px] h-auto" />
               <span className="col-span-2 font-coolvetica text-[16px]">Chouchou Shirt</span>
               <span className="col-span-1 font-coolvetica text-[16px]">29 €</span>
               <div className="flex col-span-2 justify-end">

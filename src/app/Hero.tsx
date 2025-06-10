@@ -84,7 +84,7 @@ export default function Hero() {
                 <Button Title="Menu" />
                 <div className="relative">
                   <img
-                    src="/img/new.png"
+                    src="/img/new.webp"
                     alt="new"
                     className="absolute -top-2 -right-[50%] translate-x-1/2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto px-[2px]"
                   />
@@ -102,7 +102,7 @@ export default function Hero() {
               chouchou
             </span>
             <img
-              src="/img/headerCafeChouchou.png"
+              src="/img/headerCafeChouchou.webp"
               alt="cafe chouchou"
               className="h-auto w-fit opacity-0"
               ref={centerContentRef}
@@ -119,23 +119,23 @@ export default function Hero() {
                 >
                   <div className="relative">
                     <img
-                      src="/img/coffee.png"
+                      src="/img/coffee.webp"
                       alt="coffee"
                       className="absolute left-10 bottom-6 h-auto w-full scale-125 z-10"
                     />
-                    <img src="/img/starBg.png" alt="cake event" className="h-auto w-full" />
+                    <img src="/img/starBg.webp" alt="cake event" className="h-auto w-full" />
                     <img
-                      src="/img/starBgAnim.png"
+                      src="/img/starBgAnim.webp"
                       alt=" cake event"
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto w-full z-0 animate-pulse-scale"
                     />
                     <img
-                      src="img/freeCoffee.png"
+                      src="img/freeCoffee.webp"
                       alt="coffee event"
                       className="absolute bottom-3 left-1/2 -translate-x-1/2 h-auto w-[85%] z-10"
                     />
                   </div>
-                  <img src="/img/cakeEvent.png" alt="cake event" className="h-auto w-full" />
+                  <img src="/img/cakeEvent.webp" alt="cake event" className="h-auto w-full" />
                 </div>
               </div>
             )}
@@ -152,11 +152,11 @@ export default function Hero() {
             </div>
             <div className="relative w-full h-full opacity-0">
               <img
-                src="/img/newStoreOpening.png"
+                src="/img/newStoreOpening.webp"
                 alt="new store"
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%]"
               />
-              <img src="/img/newStore.png" alt="new store" className="object-cover" />
+              <img src="/img/newStore.webp" alt="new store" className="object-cover" />
             </div>
           </div>
 
@@ -166,11 +166,11 @@ export default function Hero() {
               <div className="col-span-2 col-start-2 flex flex-col items-center pt-8 gap-4" ref={bottomRightRef}>
                 <div className="relative z-0 opacity-0">
                   <img
-                    src="/img/star.png"
+                    src="/img/star.webp"
                     alt="star"
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 animate-[spin_6s_linear_infinite]"
                   />
-                  <img src="/img/newItem.png" alt="cake event" className="relative h-auto w-full z-10" />
+                  <img src="/img/newItem.webp" alt="cake event" className="relative h-auto w-full z-10" />
                 </div>
 
                 <div className="text-[40px] uppercase text-[#B11F1F] font-coolvetica opacity-0">

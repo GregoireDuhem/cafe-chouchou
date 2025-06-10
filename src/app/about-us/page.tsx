@@ -27,7 +27,7 @@ export default function page() {
 
           <div className="col-span-12 grid grid-cols-12 gap-x-5 pb-[64px]">
             <div className="col-span-3">
-              <img src="/img/about-us-2.png" alt="about us 2" className="w-full pt-[212px]" />
+              <img src="/img/about-us-2.webp" alt="about us 2" className="w-full pt-[212px]" />
             </div>
             <div className="col-span-6 text-start text-[20px] text-black pt-[26px] h-fit">
               Welcome to <span className="font-coolvetica">Cafe Chouchou</span> where timeless elegance meets your daily
@@ -46,17 +46,17 @@ export default function page() {
               sophisticated. Always Chouchou.
             </div>
             <div className="col-span-3">
-              <img src="/img/about-us-1.png" alt="about us 1" className="w-full" />
+              <img src="/img/about-us-1.webp" alt="about us 1" className="w-full" />
             </div>
             <div className="col-span-5 col-start-8">
-              <img src="/img/about-us-3.png" alt="about us 3" className="w-full" />
+              <img src="/img/about-us-3.webp" alt="about us 3" className="w-full" />
             </div>
           </div>
         </div>
         <div className="min-h-dvh w-screen bg-primary">
           <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 pt-[159px] pb-[130px] text-white text-center">
             <div className="col-span-7">
-              <img src="/img/about-us-4.png" alt="about us 4" />
+              <img src="/img/about-us-4.webp" alt="about us 4" />
             </div>
             <div className="col-span-4 col-start-9">
               <div className="flex flex-col justify-center gap-16">

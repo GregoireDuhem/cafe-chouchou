@@ -47,9 +47,9 @@ export default function page() {
             className="col-span-12 grid grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]"
             ref={imageRef}
           >
-            <ProductCard img="/img/shop-1.png" name="Chouchou Tee-shirt" price="29€" stars="4" reviews="4" rate="4.3" />
-            <ProductCard img="/img/shop-2.png" name="Chouchou Mug" price="14€" stars="5" reviews="57" rate="4.8" />
-            <ProductCard img="/img/shop-3.png" name="Coming Soon" price="" stars="" reviews="" rate="" />
+            <ProductCard img="/img/shop-1.webp" name="Chouchou Tee-shirt" price="29€" stars="4" reviews="4" rate="4.3" />
+            <ProductCard img="/img/shop-2.webp" name="Chouchou Mug" price="14€" stars="5" reviews="57" rate="4.8" />
+            <ProductCard img="/img/shop-3.webp" name="Coming Soon" price="" stars="" reviews="" rate="" />
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@ function ProductCard({
       <div className="w-full h-full bg-black/1 relative">
         {name === "Chouchou Tee-shirt" && (
           <img
-            src="/img/new.png"
+            src="/img/new.webp"
             alt=" new"
             className="absolute top-2 right-2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto"
           />

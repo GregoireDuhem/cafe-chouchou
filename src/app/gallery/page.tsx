@@ -27,14 +27,14 @@ export default function page() {
           </div>
 
           <div className="col-span-12 grid grid-cols-12 pt-[91px] gap-5 pb-[40px]">
-            <GalleryImage src="/img/gallery-1.png" className="col-span-8 h-full" />
-            <GalleryImage src="/img/gallery-2.png" className="col-span-4 h-full" />
-            <GalleryImage src="/img/gallery-3.png" className="col-span-4 h-full" />
+            <GalleryImage src="/img/gallery-1.webp" className="col-span-8 h-full" />
+            <GalleryImage src="/img/gallery-2.webp" className="col-span-4 h-full" />
+            <GalleryImage src="/img/gallery-3.webp" className="col-span-4 h-full" />
             <div className="col-span-8 grid grid-cols-8 gap-5">
-              <GalleryImage src="/img/gallery-4.png" className="col-span-8 h-full" />
-              <GalleryImage src="/img/gallery-5.png" className="col-span-8 h-full" />
+              <GalleryImage src="/img/gallery-4.webp" className="col-span-8 h-full" />
+              <GalleryImage src="/img/gallery-5.webp" className="col-span-8 h-full" />
             </div>
-            <GalleryImage src="/img/gallery-6.png" className="col-span-12 h-full" />
+            <GalleryImage src="/img/gallery-6.webp" className="col-span-12 h-full" />
           </div>
         </div>
       </div>
