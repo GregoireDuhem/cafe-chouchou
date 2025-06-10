@@ -11,7 +11,7 @@ export default function page() {
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-primary text-center items-start h-full">
           {/* Title */}
           <div className="col-span-12 uppercase text-[48px] flex items-start pt-[76px] h-fit">
-            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink">Check-out</h1>
+            <h1 className="font-vogue pl-[15px] pr-[5px] leading-[50px] bg-pink">Check-out</h1>
           </div>
 
           {/* Left - Cart Section */}
