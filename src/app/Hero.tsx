@@ -16,6 +16,9 @@ export default function Hero() {
   const leftButtonsRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
 
+  const bottomLeftRef = useRef<HTMLDivElement>(null);
+  const bottomRightRef = useRef<HTMLDivElement>(null);
+
   const centerContentRef = useRef(null);
 
   useEffect(() => {
@@ -33,16 +36,25 @@ export default function Hero() {
     gsap.fromTo(
       rightContentRef.current?.children || [],
       { x: 100, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.2 }
+      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.4, delay: 0.2 }
     );
-  }, [isLoading]);
 
-  useEffect(() => {
-    if (isLoading) return;
     gsap.fromTo(
       centerContentRef.current,
       { opacity: 0, scale: 0.2 },
       { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out", delay: 0.5 }
+    );
+
+    gsap.fromTo(
+      bottomLeftRef.current?.children || [],
+      { x: -100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.4, delay: 0.5 }
+    );
+
+    gsap.fromTo(
+      bottomRightRef.current?.children || [],
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.4, delay: 0.5 }
     );
   }, [isLoading]);
 
@@ -98,13 +110,13 @@ export default function Hero() {
           </div>
 
           {/* Right */}
-          <div
-            className="col-span-4 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center gap-4 pt-8"
-            ref={rightContentRef}
-          >
+          <div className="col-span-4 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center gap-4 pt-8">
             {!isLoading && (
               <div className="grid grid-cols-3 gap-5 w-full">
-                <div className="col-span-1 sm:col-span-2 col-start-1 sm:col-start-2 flex flex-col items-center justify-center">
+                <div
+                  className="col-span-1 sm:col-span-2 col-start-1 sm:col-start-2 flex flex-col items-center justify-center"
+                  ref={rightContentRef}
+                >
                   <div className="relative">
                     <img
                       src="/img/coffee.png"
@@ -130,12 +142,15 @@ export default function Hero() {
           </div>
 
           {/* Bottom Left */}
-          <div className="col-span-4 sm:col-span-4 lg:col-span-9 flex flex-col justify-start items-start gap-4 pt-8 text-start bg-white z-0">
-            <div className="font-greater-theory text-start text-[20px] text-black uppercase">
+          <div
+            className="col-span-4 sm:col-span-4 lg:col-span-9 flex flex-col justify-start items-start gap-4 pt-8 text-start bg-white z-0"
+            ref={bottomLeftRef}
+          >
+            <div className="font-greater-theory text-start text-[20px] text-black uppercase opacity-0">
               8 Rue Godot de Mauroy <br />
               Paris, france
             </div>
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full opacity-0">
               <img
                 src="/img/newStoreOpening.png"
                 alt="new store"
@@ -148,8 +163,8 @@ export default function Hero() {
           {/* Bottom Right */}
           <div className="col-span-3 sm:col-span-2 lg:col-span-3 flex items-center">
             <div className="grid grid-cols-3 gap-5 w-full">
-              <div className="col-span-2 col-start-2 flex flex-col items-center pt-8 gap-4">
-                <div className="relative z-0">
+              <div className="col-span-2 col-start-2 flex flex-col items-center pt-8 gap-4" ref={bottomRightRef}>
+                <div className="relative z-0 opacity-0">
                   <img
                     src="/img/star.png"
                     alt="star"
@@ -158,7 +173,7 @@ export default function Hero() {
                   <img src="/img/newItem.png" alt="cake event" className="relative h-auto w-full z-10" />
                 </div>
 
-                <div className="text-[40px] uppercase text-[#B11F1F] font-coolvetica">
+                <div className="text-[40px] uppercase text-[#B11F1F] font-coolvetica opacity-0">
                   unlock <br /> new item
                 </div>
               </div>
