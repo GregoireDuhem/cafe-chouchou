@@ -1,11 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Header from "../Header";
 import Link from "next/link";
 import Footer from "../Footer";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useLoader } from "../components/LoaderContext";
+import gsap from "gsap";
 
 export default function page() {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const { isLoading } = useLoader();
+
+  useEffect(() => {
+    if (isLoading) return;
+    gsap.fromTo(
+      imageRef.current?.children || [],
+      { y: "100%", opacity: 0 },
+      { y: "0%", opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.2, delay: 0.1 }
+    );
+  }, [isLoading]);
+
   return (
     <>
       <div className="min-h-dvh w-screen bg-white">
@@ -26,7 +42,10 @@ export default function page() {
             <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink leading-[50px]">Shop</h1>
           </div>
           {/* Container */}
-          <div className="col-span-12 grid grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]">
+          <div
+            className="col-span-12 grid grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]"
+            ref={imageRef}
+          >
             <ProductCard img="/img/shop-1.png" name="Chouchou Tee-shirt" price="29€" stars="4" reviews="4" rate="4.3" />
             <ProductCard img="/img/shop-2.png" name="Chouchou Mug" price="14€" stars="5" reviews="57" rate="4.8" />
             <ProductCard img="/img/shop-3.png" name="Coming Soon" price="" stars="" reviews="" rate="" />
@@ -58,7 +77,7 @@ function ProductCard({
 
   return (
     <div
-      className={`col-span-4 gap-[19px] flex flex-col cursor-pointer group justify-start ${
+      className={`col-span-4 gap-[19px] flex flex-col cursor-pointer group justify-start opacity-0 ${
         isComingSoon ? "pointer-events-none" : ""
       }`}
     >
