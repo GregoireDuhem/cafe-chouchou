@@ -1,11 +1,26 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+"use client";
+import React, { useEffect } from "react";
 import Header from "../Header";
 import Link from "next/link";
 import Footer from "../Footer";
 import { GalleryImage } from "./GalleryImage";
+import gsap from "gsap";
+import { useLoader } from "../components/LoaderContext";
 
 export default function page() {
+  const { isLoading } = useLoader();
+
+  useEffect(() => {
+    if (isLoading) return;
+    const items = gsap.utils.toArray(".gallery-item");
+    gsap.fromTo(
+      items,
+      { y: 100, opacity: 0, scale: 0.8 },
+      { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out", stagger: 0.2 }
+    );
+  }, [isLoading]);
+
   return (
     <>
       <div className="min-h-dvh w-screen bg-primary">
