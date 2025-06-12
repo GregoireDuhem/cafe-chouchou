@@ -42,15 +42,17 @@ export default function page() {
             <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink text-primary leading-[50px]">Gallery</h1>
           </div>
 
-          <div className="col-span-12 grid grid-cols-12 pt-[91px] gap-5 pb-[40px]">
-            <GalleryImage src="/img/gallery-1.webp" className="col-span-8 h-full" />
-            <GalleryImage src="/img/gallery-2.webp" className="col-span-4 h-full" />
-            <GalleryImage src="/img/gallery-3.webp" className="col-span-4 h-full" />
-            <div className="col-span-8 grid grid-cols-8 gap-5">
-              <GalleryImage src="/img/gallery-4.webp" className="col-span-8 h-full" />
-              <GalleryImage src="/img/gallery-5.webp" className="col-span-8 h-full" />
+          <div className="col-span-12 grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 pt-[91px] gap-5 pb-[40px]">
+            <GalleryImage src="/img/gallery-1.webp" className="col-span-4 sm:col-span-3 lg:col-span-8 h-full" />
+            <GalleryImage src="/img/gallery-2.webp" className="col-span-4 sm:col-span-3 lg:col-span-4 h-full" />
+            <GalleryImage src="/img/gallery-3.webp" className="col-span-4 sm:col-span-3 lg:col-span-4 h-full" />
+
+            <div className="col-span-4 sm:col-span-3 lg:col-span-8 grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-5">
+              <GalleryImage src="/img/gallery-4.webp" className="col-span-4 sm:col-span-6 lg:col-span-8 h-full" />
+              <GalleryImage src="/img/gallery-5.webp" className="col-span-4 sm:col-span-6 lg:col-span-8 h-full" />
             </div>
-            <GalleryImage src="/img/gallery-6.webp" className="col-span-12 h-full" />
+
+            <GalleryImage src="/img/gallery-6.webp" className="col-span-4 sm:col-span-6 lg:col-span-12 h-full" />
           </div>
         </div>
       </div>

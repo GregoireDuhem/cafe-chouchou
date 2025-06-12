@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./components/Button";
@@ -21,6 +21,19 @@ export default function Hero() {
   const bottomRightRef = useRef<HTMLDivElement>(null);
 
   const centerContentRef = useRef(null);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // run once on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (isLoading) return;
@@ -65,13 +78,20 @@ export default function Hero() {
         <Header />
 
         {/* Animated lines */}
-        <div
-          ref={leftLine}
-          className="absolute left-[27.5%] top-0 w-[1px] bg-black z-10 opacity-0"
-          style={{ height: "100vh" }}
-        ></div>
-        <div ref={rightLine} className="absolute right-[27.5%] top-0 w-[1px] bg-black z-10 bottom-0 opacity-0"></div>
-        <div ref={topLine} className="absolute bottom-[42%] left-0 h-[1px] bg-black z-10 opacity-0"></div>
+        {!isMobile && (
+          <>
+            <div
+              ref={leftLine}
+              className="absolute left-[27.5%] top-0 w-[1px] bg-black z-10 opacity-0"
+              style={{ height: "100vh" }}
+            ></div>
+            <div
+              ref={rightLine}
+              className="absolute right-[27.5%] top-0 w-[1px] bg-black z-10 bottom-0 opacity-0"
+            ></div>
+            <div ref={topLine} className="absolute bottom-[42%] left-0 h-[1px] bg-black z-10 opacity-0"></div>
+          </>
+        )}
 
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 gap-y-[32px] pb-32 text-primary text-center min-h-[calc(100vh-152px)]">
           {/* Left */}
@@ -113,9 +133,9 @@ export default function Hero() {
           {/* Right */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center gap-4 pt-8">
             {!isLoading && (
-              <div className="grid grid-cols-3 gap-5 w-full">
+              <div className="grid grid-cols-4 sm:grid-cols-3 gap-5 w-full">
                 <div
-                  className="col-span-1 sm:col-span-2 col-start-1 sm:col-start-2 flex flex-col items-center justify-center"
+                  className="col-span-2 sm:col-span-2 sm:col-start-2 flex flex-col items-center justify-center"
                   ref={rightContentRef}
                 >
                   <div className="relative">

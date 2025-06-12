@@ -15,6 +15,7 @@ export default function page() {
   const { isLoading } = useLoader();
   const leftImgRef = useRef<HTMLImageElement>(null);
   const rightImgRef = useRef<HTMLImageElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isLoading) return;
@@ -28,6 +29,19 @@ export default function page() {
       { x: "100%", opacity: 0 },
       { x: "0%", opacity: 1, duration: 0.7, ease: "power3.out", delay: 0.5 }
     );
+
+    if (isLoading || !textRef.current) return;
+
+    const lines = textRef.current.querySelectorAll("span");
+
+    gsap.to(lines, {
+      y: 0,
+      opacity: 1,
+      duration: 0.9,
+      ease: "power3.out",
+      stagger: 0.25,
+      delay: 0.3,
+    });
   }, [isLoading]);
 
   return (
@@ -59,22 +73,37 @@ export default function page() {
                 ref={leftImgRef}
               />
             </div>
-            <div className="col-span-6 text-start text-[20px] text-black pt-[26px] h-fit">
-              Welcome to <span className="font-coolvetica">Cafe Chouchou</span> where timeless elegance meets your daily
-              ritual. Designed as a refined escape in shades of noir and blush pink, our café blends high fashion
-              aesthetics with the art of coffee. <br />
-              <br />
-              Inspired by the icons of Parisian couture, <span className="font-coolvetica">Cafe Chouchou</span> is more
-              than a café it’s a curated experience. Every cup, every detail, is a celebration of style, femininity, and
-              bold softness. We believe luxury should be felt, sipped, and shared in quiet moments that feel
-              effortlessly beautiful. <br />
-              <br />
-              At Cafe Chouchou, coffee is just the beginning. It’s a moment to pause, connect, and indulge. Our menu is
-              crafted like a runway collection: precise, elegant, and full of personality. Each blend and bite is
-              selected with intention an invitation to slow down and savor. With a community of dreamers, creatives, and
-              connoisseurs, Café Chouchou becomes a second skin, a place to be seen, and a place to feel seen. Always
-              sophisticated. Always Chouchou.
+            <div className="col-span-6 text-start text-[20px] text-black pt-[26px] h-fit leading-relaxed" ref={textRef}>
+              {[
+                [
+                  "Welcome to ",
+                  <span key="chouchou1" className="font-coolvetica">
+                    Cafe Chouchou
+                  </span>,
+                  " where timeless elegance meets your daily ritual. Designed as a refined escape in shades of noir and blush pink, our café blends high fashion aesthetics with the art of coffee.",
+                ],
+                [
+                  "Inspired by the icons of Parisian couture, Café Chouchou is more than a café it’s a curated experience. Every cup, every detail, is a celebration of style, femininity, and bold softness. We believe luxury should be felt, sipped, and shared in quiet moments that feel effortlessly beautiful.",
+                ],
+                [
+                  "At ",
+                  <span key="chouchou2" className="font-coolvetica">
+                    Cafe Chouchou
+                  </span>,
+                  " , coffee is just the beginning. It’s a moment to pause, connect, and indulge. Our menu is crafted like a runway collection: precise, elegant, and full of personality.",
+                ],
+                [
+                  "Each blend and bite is selected with intention an invitation to slow down and savor. With a community of dreamers, creatives, and connoisseurs, Café Chouchou becomes a second skin, a place to be seen, and a place to feel seen. Always sophisticated. Always Chouchou.",
+                ],
+              ].map((text, i) => (
+                <span key={i} className="block opacity-0" style={{ transform: "translateY(20px)" }}>
+                  {text}
+                  <br />
+                  <br />
+                </span>
+              ))}
             </div>
+
             <div className="col-span-3">
               <img src="/img/about-us-1.webp" alt="about us 1" className="w-full opacity-0" ref={rightImgRef} />
             </div>

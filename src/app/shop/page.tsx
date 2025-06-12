@@ -45,7 +45,7 @@ export default function page() {
           </div>
           {/* Container */}
           <div
-            className="col-span-12 grid grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]"
+            className="col-span-12 grid md:grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]"
             ref={imageRef}
           >
             <ProductCard
