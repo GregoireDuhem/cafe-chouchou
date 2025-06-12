@@ -19,6 +19,19 @@ export default function Page() {
   const startImageRef = useRef<HTMLImageElement>(null);
   const { isLoading } = useLoader();
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // run once on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const isSelected = (item: string) => selectedItem === item;
 
   const handleSelect = (item: string) => {
@@ -68,7 +81,7 @@ export default function Page() {
   }, [isLoading]);
 
   const renderDrinkItem = (name: string, price: string, key: string) => (
-    <div className="grid grid-cols-5 w-full gap-5 opacity-0" key={key}>
+    <div className="grid md:grid-cols-5 w-full md:gap-5 opacity-0" key={key}>
       <span
         className={`col-span-3 cursor-pointer link-underline w-fit ${isSelected(key) ? "selected" : ""}`}
         onClick={() => handleSelect(key)}
@@ -81,9 +94,9 @@ export default function Page() {
 
   const renderFlavorButton = (label: string, key: string, extraClasses = "") => (
     <button
-      className={`col-span-1 p-[10px] button-gradient ${key ? `btn-${key}` : ""} ${extraClasses} ${
-        isSelected(key) ? "selected" : ""
-      }`}
+      className={`col-span-1 p-[10px] button-gradient text-sm md:text-[14px] w-full ${
+        key ? `btn-${key}` : ""
+      } ${extraClasses} ${isSelected(key) ? "selected" : ""}`}
       onClick={() => handleSelect(key)}
     >
       {label}
@@ -113,7 +126,10 @@ export default function Page() {
           </div>
 
           {/* Menu Section */}
-          <div className="col-span-5 flex flex-col text-start uppercase pt-[108px] gap-[40px]" ref={drinksRef}>
+          <div
+            className="col-span-4 sm:col-span-6 lg:col-span-5 flex flex-col text-start uppercase pt-[40px] sm:pt-[108px] gap-[40px]"
+            ref={drinksRef}
+          >
             <span className="font-coolvetica text-[40px] opacity-0">Drinks</span>
             <div
               className="gap-8 flex flex-col items-start col-span-5 col-start-1 w-full font-vogue text-[24px]"
@@ -125,32 +141,56 @@ export default function Page() {
             </div>
 
             <span className="font-coolvetica text-[40px] opacity-0">Snacks</span>
-            <div className="gap-8 flex flex-col items-start col-span-5 col-start-1 w-full font-vogue text-[24px] opacity-0">
-              <div className="grid grid-cols-5 w-full gap-5 text-start">
-                <span className="col-span-1">COOKIE</span>
-                <span className="col-span-1">3€</span>
-                <span className="col-span-1 col-start-4">CAKE</span>
-                <span className="col-span-1">3.90€</span>
-              </div>
-              <div className="flex flex-col gap-4 text-center w-full text-primary text-[14px] pb-[83px]">
-                <div className="grid grid-cols-5 w-full gap-5 uppercase">
-                  {renderFlavorButton("CHOCOLAT", "chocolat")}
-                  {renderFlavorButton("CARROT", "carrot", "col-start-4")}
-                </div>
-                <div className="grid grid-cols-5 w-full gap-5 uppercase">
-                  {renderFlavorButton("PISTACHE", "pistache")}
-                  {renderFlavorButton("CITRON", "citron", "col-start-4")}
-                </div>
-                <div className="grid grid-cols-5 w-full gap-5 uppercase">
-                  {renderFlavorButton("CARAMEL", "caramel")}
-                  {renderFlavorButton("MARBRÉ", "marbre", "col-start-4")}
+
+            {isMobile ? (
+              <div className="gap-8 flex flex-col items-start w-full font-vogue text-[24px] opacity-0 pb-[64px]">
+                <div className="flex flex-wrap gap-x-4 gap-y-4 w-full text-start text-[24px]">
+                  <div className="w-1/2 flex flex-col gap-2">
+                    <span>COOKIE</span>
+                    <div className="mt-1">{renderFlavorButton("CHOCOLAT", "chocolat")}</div>
+                    <div className="mt-1">{renderFlavorButton("PISTACHE", "pistache")}</div>
+                    <div className="mt-1">{renderFlavorButton("CARAMEL", "caramel")}</div>
+                  </div>
+
+                  <div className="w-1/2 flex flex-col gap-2">
+                    <span>CAKE</span>
+                    <div className="mt-1">{renderFlavorButton("CARROT", "carrot")}</div>
+                    <div className="mt-1">{renderFlavorButton("CITRON", "citron")}</div>
+                    <div className="mt-1">{renderFlavorButton("MARBRÉ", "marbre")}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="gap-8 flex flex-col items-start col-span-5 col-start-1 w-full font-vogue text-[24px] opacity-0">
+                <div className="grid grid-cols-5 w-full gap-5 text-start">
+                  <span className="col-span-1">COOKIE</span>
+                  <span className="col-span-1">3€</span>
+                  <span className="col-span-1 col-start-4">CAKE</span>
+                  <span className="col-span-1">3.90€</span>
+                </div>
+                <div className="flex flex-col gap-4 text-center w-full text-primary text-[14px] pb-[83px]">
+                  <div className="grid grid-cols-5 w-full gap-5 uppercase">
+                    {renderFlavorButton("CHOCOLAT", "chocolat")}
+                    {renderFlavorButton("CARROT", "carrot", "col-start-4")}
+                  </div>
+                  <div className="grid grid-cols-5 w-full gap-5 uppercase">
+                    {renderFlavorButton("PISTACHE", "pistache")}
+                    {renderFlavorButton("CITRON", "citron", "col-start-4")}
+                  </div>
+                  <div className="grid grid-cols-5 w-full gap-5 uppercase">
+                    {renderFlavorButton("CARAMEL", "caramel")}
+                    {renderFlavorButton("MARBRÉ", "marbre", "col-start-4")}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Image Preview */}
-          <div className="col-span-5 col-start-8 w-full h-full pt-[108px] pb-[83px]" ref={startImageRef}>
+          <div
+            className="col-span-4 sm:col-span-6 lg:col-span-5 lg:col-start-8 w-[40%] sm:w-full h-1/2 sm:h-full pt-[108px] pb-[83px] fixed bottom-0 right-4 sm:relative"
+            ref={startImageRef}
+          >
             <div
               ref={imageWrapperRef}
               className="w-full h-full flex items-center justify-center select-frame overflow-hidden relative opacity-0"

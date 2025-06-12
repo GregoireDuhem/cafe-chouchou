@@ -21,7 +21,6 @@ export default function Hero() {
   const bottomRightRef = useRef<HTMLDivElement>(null);
 
   const centerContentRef = useRef(null);
-
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -37,6 +36,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (isLoading) return;
+
     gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2.3, ease: "power3.out", opacity: 1 });
     gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
     gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
@@ -135,7 +135,7 @@ export default function Hero() {
             {!isLoading && (
               <div className="grid grid-cols-4 sm:grid-cols-3 gap-5 w-full">
                 <div
-                  className="col-span-2 sm:col-span-2 sm:col-start-2 flex flex-col items-center justify-center"
+                  className="col-span-2 sm:col-span-2 col-start-2 sm:col-start-2 flex flex-col items-center justify-center"
                   ref={rightContentRef}
                 >
                   <div className="relative">

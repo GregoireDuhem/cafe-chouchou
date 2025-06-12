@@ -65,15 +65,18 @@ export default function page() {
           </div>
 
           <div className="col-span-12 grid grid-cols-12 gap-x-5 pb-[64px]">
-            <div className="col-span-3">
+            <div className="col-span-12 sm:col-span-3">
               <img
                 src="/img/about-us-2.webp"
                 alt="about us 2"
-                className="w-full pt-[212px] opacity-0"
+                className="w-full pt-[64px] sm:pt-[212px] opacity-0"
                 ref={leftImgRef}
               />
             </div>
-            <div className="col-span-6 text-start text-[20px] text-black pt-[26px] h-fit leading-relaxed" ref={textRef}>
+            <div
+              className="col-span-12 sm:col-span-6 text-start text-[14px] md:text-[20px] text-black pt-[26px] h-fit leading-relaxed"
+              ref={textRef}
+            >
               {[
                 [
                   "Welcome to ",
@@ -104,22 +107,22 @@ export default function page() {
               ))}
             </div>
 
-            <div className="col-span-3">
+            <div className="col-span-12 sm:col-span-3">
               <img src="/img/about-us-1.webp" alt="about us 1" className="w-full opacity-0" ref={rightImgRef} />
             </div>
-            <div className="col-span-5 col-start-8">
+            <div className="col-span-12 sm:col-span-5 md:col-start-8 pt-5 md:pt-0">
               <img src="/img/about-us-3.webp" alt="about us 3" className="w-full" />
             </div>
           </div>
         </div>
         <div className="min-h-dvh w-screen bg-primary">
-          <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 pt-[159px] pb-[130px] text-white text-center">
+          <div className="px-4 sm:px-6 lg:px-[120px] md:grid md:grid-cols-12 flex flex-col gap-x-5 pt-[159px] pb-[130px] text-white text-center">
             <div className="col-span-7">
               <img src="/img/about-us-4.webp" alt="about us 4" />
             </div>
             <div className="col-span-4 col-start-9">
               <div className="flex flex-col justify-center gap-16">
-                <div className="font-bold text-[32px] font-inria-bold">Our values</div>
+                <div className="font-bold text-[32px] font-inria-bold pt-12 md:pt-0">Our values</div>
                 <div className="flex flex-col gap-12">
                   <div className="flex justify-between">
                     <span className="text-[20px] font-bold">Sustainability</span>
