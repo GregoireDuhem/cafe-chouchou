@@ -1,10 +1,49 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import Footer from "@/app/Footer";
 import Header from "@/app/Header";
+import ScrambleLink from "../components/ScrambleLink";
+
+import gsap from "gsap";
+import { useLoader } from "../components/LoaderContext";
 
 export default function page() {
+  const { isLoading } = useLoader();
+  const leftImgRef = useRef<HTMLImageElement>(null);
+  const rightImgRef = useRef<HTMLImageElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isLoading) return;
+    gsap.fromTo(
+      leftImgRef.current,
+      { x: "-100%", opacity: 0 },
+      { x: "0%", opacity: 1, duration: 0.7, ease: "power3.out", delay: 0.2 }
+    );
+    gsap.fromTo(
+      rightImgRef.current,
+      { x: "100%", opacity: 0 },
+      { x: "0%", opacity: 1, duration: 0.7, ease: "power3.out", delay: 0.5 }
+    );
+
+    if (isLoading || !textRef.current) return;
+
+    const lines = textRef.current.querySelectorAll("span");
+
+    gsap.to(lines, {
+      y: 0,
+      opacity: 1,
+      duration: 0.9,
+      ease: "power3.out",
+      stagger: 0.25,
+      delay: 0.3,
+    });
+  }, [isLoading]);
+
   return (
     <>
       <div className="min-h-dvh w-screen bg-white">
@@ -12,55 +51,78 @@ export default function page() {
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-primary text-center min-h-[calc(100vh-152px)]">
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; About us
+              <ScrambleLink href="/" label="Home > About us" />
             </Link>
             <div className="flex gap-4 uppercase font-coolvetica-cond text-[20px]">
-              <Link href="/menu">[menu]</Link>
-              <Link href="/shop">[shop]</Link>
-              <Link href="/gallery">[gallery]</Link>
+              <ScrambleLink href="/menu" label="[menu]" />
+              <ScrambleLink href="/shop" label="[shop]" />
+              <ScrambleLink href="/gallery" label="[gallery]" />
             </div>
           </div>
 
           <div className="col-span-12 uppercase text-[48px] flex items-start pt-[76px]">
-            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink ">Gallery</h1>
+            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink leading-[50px]">About us</h1>
           </div>
 
           <div className="col-span-12 grid grid-cols-12 gap-x-5 pb-[64px]">
-            <div className="col-span-3">
-              <img src="/img/about-us-2.png" alt="about us 2" className="w-full pt-[212px]" />
+            <div className="col-span-12 sm:col-span-3">
+              <img
+                src="/img/about-us-2.webp"
+                alt="about us 2"
+                className="w-full pt-[64px] sm:pt-[212px] opacity-0"
+                ref={leftImgRef}
+              />
             </div>
-            <div className="col-span-6 text-start text-[20px] text-black pt-[26px] h-fit">
-              Welcome to <span className="font-coolvetica">Cafe Chouchou</span> where timeless elegance meets your daily
-              ritual. Designed as a refined escape in shades of noir and blush pink, our café blends high fashion
-              aesthetics with the art of coffee. <br />
-              <br />
-              Inspired by the icons of Parisian couture, <span className="font-coolvetica">Cafe Chouchou</span> is more
-              than a café it’s a curated experience. Every cup, every detail, is a celebration of style, femininity, and
-              bold softness. We believe luxury should be felt, sipped, and shared in quiet moments that feel
-              effortlessly beautiful. <br />
-              <br />
-              At Cafe Chouchou, coffee is just the beginning. It’s a moment to pause, connect, and indulge. Our menu is
-              crafted like a runway collection: precise, elegant, and full of personality. Each blend and bite is
-              selected with intention an invitation to slow down and savor. With a community of dreamers, creatives, and
-              connoisseurs, Café Chouchou becomes a second skin, a place to be seen, and a place to feel seen. Always
-              sophisticated. Always Chouchou.
+            <div
+              className="col-span-12 sm:col-span-6 text-start text-[14px] md:text-[20px] text-black pt-[26px] h-fit leading-relaxed"
+              ref={textRef}
+            >
+              {[
+                [
+                  "Welcome to ",
+                  <span key="chouchou1" className="font-coolvetica">
+                    Cafe Chouchou
+                  </span>,
+                  " where timeless elegance meets your daily ritual. Designed as a refined escape in shades of noir and blush pink, our café blends high fashion aesthetics with the art of coffee.",
+                ],
+                [
+                  "Inspired by the icons of Parisian couture, Café Chouchou is more than a café it’s a curated experience. Every cup, every detail, is a celebration of style, femininity, and bold softness. We believe luxury should be felt, sipped, and shared in quiet moments that feel effortlessly beautiful.",
+                ],
+                [
+                  "At ",
+                  <span key="chouchou2" className="font-coolvetica">
+                    Cafe Chouchou
+                  </span>,
+                  " , coffee is just the beginning. It’s a moment to pause, connect, and indulge. Our menu is crafted like a runway collection: precise, elegant, and full of personality.",
+                ],
+                [
+                  "Each blend and bite is selected with intention an invitation to slow down and savor. With a community of dreamers, creatives, and connoisseurs, Café Chouchou becomes a second skin, a place to be seen, and a place to feel seen. Always sophisticated. Always Chouchou.",
+                ],
+              ].map((text, i) => (
+                <span key={i} className="block opacity-0" style={{ transform: "translateY(20px)" }}>
+                  {text}
+                  <br />
+                  <br />
+                </span>
+              ))}
             </div>
-            <div className="col-span-3">
-              <img src="/img/about-us-1.png" alt="about us 1" className="w-full" />
+
+            <div className="col-span-12 sm:col-span-3">
+              <img src="/img/about-us-1.webp" alt="about us 1" className="w-full opacity-0" ref={rightImgRef} />
             </div>
-            <div className="col-span-5 col-start-8">
-              <img src="/img/about-us-3.png" alt="about us 3" className="w-full" />
+            <div className="col-span-12 sm:col-span-5 md:col-start-8 pt-5 md:pt-0">
+              <img src="/img/about-us-3.webp" alt="about us 3" className="w-full" />
             </div>
           </div>
         </div>
         <div className="min-h-dvh w-screen bg-primary">
-          <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 pt-[159px] pb-[130px] text-white text-center">
+          <div className="px-4 sm:px-6 lg:px-[120px] md:grid md:grid-cols-12 flex flex-col gap-x-5 pt-[159px] pb-[130px] text-white text-center">
             <div className="col-span-7">
-              <img src="/img/about-us-4.png" alt="about us 4" />
+              <img src="/img/about-us-4.webp" alt="about us 4" />
             </div>
             <div className="col-span-4 col-start-9">
               <div className="flex flex-col justify-center gap-16">
-                <div className="font-bold text-[32px] font-inria-bold">Our values</div>
+                <div className="font-bold text-[32px] font-inria-bold pt-12 md:pt-0">Our values</div>
                 <div className="flex flex-col gap-12">
                   <div className="flex justify-between">
                     <span className="text-[20px] font-bold">Sustainability</span>

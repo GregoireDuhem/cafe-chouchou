@@ -1,22 +1,76 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./components/Button";
 import gsap from "gsap";
+import { useLoader } from "./components/LoaderContext";
+import Link from "next/link";
 
 export default function Hero() {
   const leftLine = useRef(null);
   const rightLine = useRef(null);
   const topLine = useRef(null);
+  const { isLoading } = useLoader();
+  const leftButtonsRef = useRef<HTMLDivElement>(null);
+  const rightContentRef = useRef<HTMLDivElement>(null);
+
+  const bottomLeftRef = useRef<HTMLDivElement>(null);
+  const bottomRightRef = useRef<HTMLDivElement>(null);
+
+  const centerContentRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2, ease: "power3.out" });
-    gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2, ease: "power3.out" });
-    gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out" });
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // run once on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (isLoading) return;
+
+    gsap.fromTo(leftLine.current, { height: 0 }, { height: "58%", duration: 2.3, ease: "power3.out", opacity: 1 });
+    gsap.fromTo(rightLine.current, { height: 0 }, { height: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
+    gsap.fromTo(topLine.current, { width: 0 }, { width: "100%", duration: 2.3, ease: "power3.out", opacity: 1 });
+
+    gsap.fromTo(
+      leftButtonsRef.current?.children || [],
+      { x: -100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.2 }
+    );
+
+    gsap.fromTo(
+      rightContentRef.current?.children || [],
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.4, delay: 0.2 }
+    );
+
+    gsap.fromTo(
+      centerContentRef.current,
+      { opacity: 0, scale: 0.2 },
+      { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out", delay: 0.5 }
+    );
+
+    gsap.fromTo(
+      bottomLeftRef.current?.children || [],
+      { x: -100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.4, delay: 0.5 }
+    );
+
+    gsap.fromTo(
+      bottomRightRef.current?.children || [],
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.4, delay: 0.5 }
+    );
+  }, [isLoading]);
 
   return (
     <>
@@ -24,102 +78,127 @@ export default function Hero() {
         <Header />
 
         {/* Animated lines */}
-        <div
-          ref={leftLine}
-          className="absolute left-[27.5%] top-0 w-[1px] bg-black z-10"
-          style={{ height: "100vh" }}
-        ></div>
-        <div ref={rightLine} className="absolute right-[27.5%] top-0 w-[1px] bg-black z-10 bottom-0"></div>
-        <div ref={topLine} className="absolute bottom-[42%] left-0 h-[1px] bg-black z-10"></div>
+        {!isMobile && (
+          <>
+            <div
+              ref={leftLine}
+              className="absolute left-[27.5%] top-0 w-[1px] bg-black z-10 opacity-0"
+              style={{ height: "100vh" }}
+            ></div>
+            <div
+              ref={rightLine}
+              className="absolute right-[27.5%] top-0 w-[1px] bg-black z-10 bottom-0 opacity-0"
+            ></div>
+            <div ref={topLine} className="absolute bottom-[42%] left-0 h-[1px] bg-black z-10 opacity-0"></div>
+          </>
+        )}
 
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 gap-y-[32px] pb-32 text-primary text-center min-h-[calc(100vh-152px)]">
           {/* Left */}
           <div
             className="col-span-4 sm:col-span-2 lg:col-span-3 uppercase pt-10 md:pt-0 flex flex-col justify-center items-center md:items-start gap-6 
-          font-vogue text-[24px] sm:text-[28px] lg:text-[32px]"
+              font-vogue text-[24px] sm:text-[28px] lg:text-[32px]"
+            ref={leftButtonsRef}
           >
-            <Button Title="Menu" />
-            <div className="relative">
-              <img
-                src="/img/new.png"
-                alt="new"
-                className="absolute -top-2 -right-[50%] translate-x-1/2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto px-[2px]"
-              />
-              <Button Title="Shop" />
-            </div>
-            <Button Title="Gallery" />
-            <Button Title="About us" />
+            {!isLoading && (
+              <>
+                <Button Title="Menu" />
+                <div className="relative">
+                  <img
+                    src="/img/new.webp"
+                    alt="new"
+                    className="absolute -top-2 -right-[50%] translate-x-1/2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto px-[2px]"
+                  />
+                  <Button Title="Shop" />
+                </div>
+                <Button Title="Gallery" />
+                <Button Title="About us" />
+              </>
+            )}
           </div>
 
           {/* Center */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-6 flex flex-col items-center justify-center relative py-8">
-            <span className="absolute bottom-[50px] left-1/2 -translate-x-1/2 font-vogue text-[28px] sm:text-[36px] lg:text-[40px] opacity-[33%] text-white">
+            <span className="absolute bottom-[10%] left-1/2 -translate-x-1/2 font-vogue text-[28px] sm:text-[36px] lg:text-[40px] opacity-[33%] text-white z-20">
               chouchou
             </span>
-            <img src="/img/headerCafeChouchou.png" alt="cafe chouchou" className="h-auto w-fit" />
+            <img
+              src="/img/headerCafeChouchou.webp"
+              alt="cafe chouchou"
+              className="h-auto w-fit opacity-0"
+              ref={centerContentRef}
+            />
           </div>
 
           {/* Right */}
           <div className="col-span-4 sm:col-span-2 lg:col-span-3 flex flex-col items-center justify-center gap-4 pt-8">
-            <div className="grid grid-cols-3 gap-5 w-full">
-              <div className="col-span-1 sm:col-span-2 col-start-1 sm:col-start-2 flex flex-col items-center justify-center">
-                <div className="relative">
-                  <img
-                    src="/img/coffee.png"
-                    alt="coffee"
-                    className="absolute left-10 bottom-6 h-auto w-full scale-125 z-10"
-                  />
-                  <img src="/img/starBg.png" alt="cake event" className="h-auto w-full" />
-                  <img
-                    src="/img/starBgAnim.png"
-                    alt=" cake event"
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto w-full z-0 animate-pulse-scale"
-                  />
-                  <img
-                    src="img/freeCoffee.png"
-                    alt="coffee event"
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 h-auto w-[85%] z-10"
-                  />
+            {!isLoading && (
+              <div className="grid grid-cols-4 sm:grid-cols-3 gap-5 w-full">
+                <div
+                  className="col-span-2 sm:col-span-2 col-start-2 sm:col-start-2 flex flex-col items-center justify-center"
+                  ref={rightContentRef}
+                >
+                  <div className="relative">
+                    <img
+                      src="/img/coffee.webp"
+                      alt="coffee"
+                      className="absolute left-10 bottom-6 h-auto w-full scale-125 z-10"
+                    />
+                    <img src="/img/starBg.webp" alt="cake event" className="h-auto w-full" />
+                    <img
+                      src="/img/starBgAnim.webp"
+                      alt=" cake event"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto w-full z-0 animate-pulse-scale"
+                    />
+                    <img
+                      src="img/freeCoffee.webp"
+                      alt="coffee event"
+                      className="absolute bottom-3 left-1/2 -translate-x-1/2 h-auto w-[85%] z-10"
+                    />
+                  </div>
+                  <img src="/img/cakeEvent.webp" alt="cake event" className="h-auto w-full" />
                 </div>
-                <img src="/img/cakeEvent.png" alt="cake event" className="h-auto w-full" />
               </div>
-            </div>
+            )}
           </div>
 
           {/* Bottom Left */}
-          <div className="col-span-4 sm:col-span-4 lg:col-span-9 flex flex-col justify-start items-start gap-4 pt-8 text-start bg-white z-0">
-            <div className="font-greater-theory text-start text-[20px] text-black uppercase">
+          <div
+            className="col-span-4 sm:col-span-4 lg:col-span-9 flex flex-col justify-start items-start gap-4 pt-8 text-start bg-white z-0"
+            ref={bottomLeftRef}
+          >
+            <div className="font-greater-theory text-start text-[20px] text-black uppercase opacity-0">
               8 Rue Godot de Mauroy <br />
               Paris, france
             </div>
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full opacity-0">
               <img
-                src="/img/newStoreOpening.png"
+                src="/img/newStoreOpening.webp"
                 alt="new store"
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%]"
               />
-              <img src="/img/newStore.png" alt="new store" className="object-cover" />
+              <img src="/img/newStore.webp" alt="new store" className="object-cover" />
             </div>
           </div>
 
           {/* Bottom Right */}
           <div className="col-span-3 sm:col-span-2 lg:col-span-3 flex items-center">
-            <div className="grid grid-cols-3 gap-5 w-full">
-              <div className="col-span-2 col-start-2 flex flex-col items-center pt-8 gap-4">
-                <div className="relative z-0">
+            <Link className="grid grid-cols-3 gap-5 w-full cursor-pointer" href="/shop">
+              <div className="col-span-2 col-start-2 flex flex-col items-center pt-8 gap-4" ref={bottomRightRef}>
+                <div className="relative z-0 opacity-0">
                   <img
-                    src="/img/star.png"
+                    src="/img/star.webp"
                     alt="star"
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 animate-[spin_6s_linear_infinite]"
                   />
-                  <img src="/img/newItem.png" alt="cake event" className="relative h-auto w-full z-10" />
+                  <img src="/img/newItem.webp" alt="cake event" className="relative h-auto w-full z-10" />
                 </div>
 
-                <div className="text-[40px] uppercase text-[#B11F1F] font-coolvetica">
+                <div className="text-[40px] uppercase text-[#B11F1F] font-coolvetica opacity-0">
                   unlock <br /> new item
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -5,16 +5,19 @@ import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import gsap from "gsap";
+import { useLoader } from "./components/LoaderContext";
 
 export default function Header() {
   const pathname = usePathname();
   const isGallery = pathname === "/gallery";
+  const { isLoading } = useLoader();
 
   const hrRef = useRef(null);
 
   useEffect(() => {
+    if (isLoading) return;
     gsap.fromTo(hrRef.current, { width: 0 }, { width: "100%", duration: 2, ease: "power3.out" });
-  }, []);
+  }, [isLoading]);
 
   return (
     <header className="h-[152px] w-screen">
@@ -36,10 +39,10 @@ export default function Header() {
         <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-end">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-5 w-full h-full">
             <div className="flex justify-end items-center col-start-1 sm:col-start-2">
-              <img src="/img/user.svg" alt="user" className="cursor-pointer" />
+              <img src="/img/user.svg" alt="user" className="cursor-pointer size-4 md:size-6" />
             </div>
             <Link href="/cart" className="flex justify-start items-center col-start-3">
-              <img src="/img/cart.svg" alt="cart" className="cursor-pointer" />
+              <img src="/img/cart.svg" alt="cart" className="cursor-pointer size-4 md:size-6" />
             </Link>
           </div>
         </div>

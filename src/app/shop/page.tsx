@@ -1,11 +1,29 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Header from "../Header";
 import Link from "next/link";
 import Footer from "../Footer";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useLoader } from "../components/LoaderContext";
+import gsap from "gsap";
+import ScrambleLink from "../components/ScrambleLink";
 
 export default function page() {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const { isLoading } = useLoader();
+
+  useEffect(() => {
+    if (isLoading) return;
+    gsap.fromTo(
+      imageRef.current?.children || [],
+      { y: "100%", opacity: 0 },
+      { y: "0%", opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.2, delay: 0.1 }
+    );
+  }, [isLoading]);
+
   return (
     <>
       <div className="min-h-dvh w-screen bg-white">
@@ -14,22 +32,32 @@ export default function page() {
           {/*  */}
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; Shop
+              <ScrambleLink href="/" label="Home > Shop" />
             </Link>
             <div className="flex gap-4 uppercase font-coolvetica-cond text-[20px]">
-              <Link href="/menu">[menu]</Link>
-              <Link href="/gallery">[gallery]</Link>
-              <Link href="/about-us">[about us]</Link>
+              <ScrambleLink href="/menu" label="[menu]" />
+              <ScrambleLink href="/gallery" label="[gallery]" />
+              <ScrambleLink href="/about-us" label="[about us]" />
             </div>
           </div>
           <div className="col-span-12 uppercase text-[48px] flex items-start pt-[76px]">
-            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink">Shop</h1>
+            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink leading-[50px]">Shop</h1>
           </div>
           {/* Container */}
-          <div className="col-span-12 grid grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]">
-            <ProductCard img="/img/shop-1.png" name="Chouchou Tee-shirt" price="29€" stars="4" reviews="4" rate="4.3" />
-            <ProductCard img="/img/shop-2.png" name="Chouchou Mug" price="14€" stars="5" reviews="57" rate="4.8" />
-            <ProductCard img="/img/shop-3.png" name="Coming Soon" price="" stars="" reviews="" rate="" />
+          <div
+            className="col-span-12 grid md:grid-cols-12 text-start uppercase pt-[108px] gap-x-5 h-full w-full pb-[82px]"
+            ref={imageRef}
+          >
+            <ProductCard
+              img="/img/shop-1.webp"
+              name="Chouchou Tee-shirt"
+              price="29€"
+              stars="4"
+              reviews="4"
+              rate="4.3"
+            />
+            <ProductCard img="/img/shop-2.webp" name="Chouchou Mug" price="14€" stars="5" reviews="57" rate="4.8" />
+            <ProductCard img="/img/shop-3.webp" name="Coming Soon" price="" stars="" reviews="" rate="" />
           </div>
         </div>
       </div>
@@ -58,14 +86,14 @@ function ProductCard({
 
   return (
     <div
-      className={`col-span-4 gap-[19px] flex flex-col cursor-pointer group justify-start ${
+      className={`col-span-4 gap-[19px] flex flex-col cursor-pointer group justify-start opacity-0 ${
         isComingSoon ? "pointer-events-none" : ""
       }`}
     >
       <div className="w-full h-full bg-black/1 relative">
         {name === "Chouchou Tee-shirt" && (
           <img
-            src="/img/new.png"
+            src="/img/new.webp"
             alt=" new"
             className="absolute top-2 right-2 font-coolvetica-cond leading-tight text-[20px] capitalize bg-pink h-6 w-auto"
           />

@@ -4,27 +4,28 @@ import Header from "../Header";
 import Link from "next/link";
 import Footer from "../Footer";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import ScrambleLink from "../components/ScrambleLink";
 
 export default function page() {
   return (
     <>
       <div className="min-h-dvh w-screen bg-white">
         <Header />
-        <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-primary text-center min-h-[calc(100vh-152px)]">
+        <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-primary text-center min-h-screen">
           <div className="col-span-12 flex items-start justify-between pt-6">
             <Link className="text-[16px] underline" href="/">
-              Home &gt; Item
+              <ScrambleLink href="/" label="Home > Item" />
             </Link>
           </div>
 
           <div className="col-span-12 flex items-start pt-[64px]">
-            <div className="grid grid-cols-12 gap-5">
-              <div className="col-span-7 w-full h-full bg-black/1 relative">
-                <img src="/img/shop-1.png" alt="item" />
+            <div className="grid md:grid-cols-12 gap-5">
+              <div className="col-span-12 md:col-span-7 w-full h-full bg-black/1 relative">
+                <img src="/img/shop-1.webp" alt="item" />
               </div>
-              <div className="col-span-5 flex flex-col gap-8">
+              <div className="col-span-12 md:col-span-5 flex flex-col md:gap-8">
                 <div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between flex-col md:flex-row">
                     <div className="font-coolvetica text-[32px]">Chouchou shirt</div>
                     <div className="flex justify-center items-center gap-2">
                       <div className="flex">
@@ -60,7 +61,7 @@ export default function page() {
                   <div className="font-coolvetica text-[16px] text-[#10732A] text-start">
                     En stock, préparation et expédition sous 3/5 jours ouvrés
                   </div>
-                  <div className="w-full grid grid-cols-5 gap-8 h-[40px] gap-x-5">
+                  <div className="w-full grid grid-cols-5 gap-8 h-full gap-x-5">
                     <div className="flex col-span-2">
                       <button className="w-[57px] border h-[40px]">-</button>
                       <input

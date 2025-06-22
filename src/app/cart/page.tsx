@@ -11,13 +11,13 @@ export default function page() {
         <div className="px-4 sm:px-6 lg:px-[120px] grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-x-5 text-primary text-center items-start h-full">
           {/* Title */}
           <div className="col-span-12 uppercase text-[48px] flex items-start pt-[76px] h-fit">
-            <h1 className="font-vogue pl-[15px] pr-[5px] bg-pink">Check-out</h1>
+            <h1 className="font-vogue pl-[15px] pr-[5px] leading-[50px] bg-pink">Check-out</h1>
           </div>
 
           {/* Left - Cart Section */}
-          <div className="col-span-8 flex flex-col items-start pt-[64px] h-fit">
+          <div className="col-span-12 sm:col-span-8 flex flex-col items-start pt-[64px] h-fit">
             {/* Cart Title & Count */}
-            <div className="grid grid-cols-8 w-full gap-5 text-start items-end">
+            <div className="grid grid-cols-4 sm:grid-cols-8 w-full gap-5 text-start items-end">
               <span className="col-span-1 font-coolvetica text-[40px]">Cart</span>
               <span className="col-span-1 font-coolvetica text-[16px]">(1 Article)</span>
             </div>
@@ -25,11 +25,11 @@ export default function page() {
             <hr className="w-full h-[1px] bg-black mt-[14px]" />
 
             {/* Cart Row */}
-            <div className="grid grid-cols-8 gap-5 w-full text-start items-center mt-5">
-              <img src="/img/shop-1.png" alt="shop-1" className="col-span-2 w-[210px] h-auto" />
+            <div className="grid grid-cols-4 sm:grid-cols-8 gap-5 w-full text-start items-center mt-5">
+              <img src="/img/shop-1.webp" alt="shop-1" className="col-span-1 sm:col-span-2 w-[210px] h-auto" />
               <span className="col-span-2 font-coolvetica text-[16px]">Chouchou Shirt</span>
               <span className="col-span-1 font-coolvetica text-[16px]">29 €</span>
-              <div className="flex col-span-2 justify-end">
+              <div className="flex col-span-4 sm:col-span-2 justify-center sm:justify-end">
                 <div className="relative">
                   <button className="w-[57px] border h-[40px]">-</button>
                   <input
@@ -48,7 +48,7 @@ export default function page() {
           </div>
 
           {/* Right - Total Section */}
-          <div className="col-span-4 flex flex-col pt-[64px] h-fit items-start">
+          <div className="col-span-12 sm:col-span-4 flex flex-col pt-[64px] h-fit items-start pb-10 sm:pb-0">
             <div className="grid grid-cols-4 w-full gap-5 text-start items-end">
               <span className="col-span-2 font-coolvetica text-[16px]">Total</span>
               <div className="col-span-2 flex font-coolvetica text-[40px] gap-[8px] justify-end">
